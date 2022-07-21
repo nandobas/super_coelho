@@ -1,0 +1,85 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.game-board{
+    top: 100px;
+    width: 80%;
+    height: 600px;
+    border-bottom: 10px solid rgb(6, 108, 15);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background:linear-gradient(#87CEE8, #E0F6FF);
+}
+
+.clouds{
+    position: absolute;
+    top: 0;
+    width: 350px;
+    right:-350px;
+    animation: arbusto-animation 10s infinite linear;
+}
+
+.bunny{
+    position: absolute;
+    bottom: -30px;
+    width: 350px;
+}
+
+.jump{
+    animation: jump 500ms ease-out;
+}
+
+.arbusto{
+    position: absolute;
+    bottom: -40px;
+    width: 150px;
+    right: -150px;
+    animation: arbusto-animation 1.5s infinite linear;
+}
+
+@keyframes nuvens-animation{
+    from {
+        right:0%;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+
+
+@keyframes arbusto-animation{
+    from {
+        right:-150px;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+
+@keyframes jump{
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+    
+    100% {
+        bottom: 0px;
+    }
+}
