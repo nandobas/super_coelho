@@ -23,21 +23,8 @@ const loop = setInterval(()=>{
     }
     if(gameRun)
     switch (datasetUser.level) {
-        case 1:    
-            console.log('level 1', arbustoPosition);        
+        case 1:     
             if(arbustoPosition >=0 && arbustoPosition <=20){
-                incrementScore();
-            }
-            break;
-        case 2:   
-            console.log('level 2', arbustoPosition);               
-            if(arbustoPosition >=0  && arbustoPosition <= 25){
-                incrementScore();
-            }
-            break;
-        case 3:   
-            console.log('level 3', arbustoPosition);               
-            if(arbustoPosition >=0  && arbustoPosition <= 30){
                 incrementScore();
             }
             break;
