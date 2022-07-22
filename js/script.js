@@ -49,10 +49,7 @@ function bunnyJump() {
 function incrementScore(){
     datasetUser.score ++;
     userscore.innerHTML = datasetUser.score; 
-    if(datasetUser.score == 10){
-        incrementLevel()
-    }
-    if(datasetUser.score == 20){
+    if(datasetUser.score == 100){
         incrementLevel()
     }
 }
