@@ -5,21 +5,25 @@
 }
 
 .game-board{
-    top: 100px;
     width: 80%;
-    height: 600px;
+    height: 500px;
     border-bottom: 10px solid rgb(6, 108, 15);
     margin: 0 auto;
     position: relative;
     overflow: hidden;
     background:linear-gradient(#87CEE8, #E0F6FF);
 }
+.reset{
+    z-index: 100;
+}
 
 .clouds{
     position: absolute;
     top: 0;
     width: 350px;
-    right:-350px;
+    right:-350px;    
+}
+.animate-clouds{
     animation: arbusto-animation 10s infinite linear;
 }
 
@@ -38,7 +42,9 @@
     bottom: -40px;
     width: 150px;
     right: -150px;
-    animation: arbusto-animation 1.5s infinite linear;
+}
+.animate-arbusto{
+    animation: arbusto-animation 1.3s infinite linear;
 }
 
 @keyframes nuvens-animation{
