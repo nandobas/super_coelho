@@ -5,7 +5,7 @@
 }
 
 .game-board{
-    width: 80%;
+    width: 100%;
     height: 500px;
     border-bottom: 10px solid rgb(6, 108, 15);
     margin: 0 auto;
@@ -13,6 +13,24 @@
     overflow: hidden;
     background:linear-gradient(#87CEE8, #E0F6FF);
 }
+.score{
+    background-image: url('../images/placa-de-madeira.png');
+    background-repeat: no-repeat;
+    background-size: 150px;
+    width: 150px;
+    height: 300px;
+    float: right;
+    margin-right: 1%;
+    padding-top: 33px;
+    padding-left: 4.5%;
+}
+
+.label-score{
+    width: 150px;
+    font: 2em "Times New Roman", Times, serif;
+    font-weight: bold;
+}
+
 .reset{
     z-index: 100;
 }
@@ -43,8 +61,14 @@
     width: 150px;
     right: -150px;
 }
-.animate-arbusto{
+.animate-arbusto-level-1{
     animation: arbusto-animation 1.3s infinite linear;
+}
+.animate-arbusto-level-2{
+    animation: arbusto-animation 1.0s infinite linear;
+}
+.animate-arbusto-level-3{
+    animation: arbusto-animation 0.9s infinite linear;
 }
 
 @keyframes nuvens-animation{

@@ -1,15 +1,48 @@
 const bunny = document.querySelector(".bunny");
 const arbusto = document.querySelector(".arbusto");
 const clouds = document.querySelector(".clouds");
+const userscore = document.querySelector(".label-score");
+var gameRun = false;
+
+class classDataset{
+    classLevel = {arbusto:'animate-arbusto-level-1'};
+    level = 1;
+    score = 0;
+}
+var datasetUser = new classDataset()
 
 const loop = setInterval(()=>{
     const cloudsPosition = arbusto.offsetLeft;
     const arbustoPosition = arbusto.offsetLeft;
     const bunnyBottom = +window.getComputedStyle(bunny).bottom.replace('px', '');
 
-    if(arbustoPosition <= 180 && arbustoPosition >0 && bunnyBottom < 80){
-        stopAnimation(arbustoPosition, bunnyBottom, cloudsPosition);        
+    if(arbustoPosition <= 180 && arbustoPosition >0){
+        if(bunnyBottom < 80){
+            stopAnimation(arbustoPosition, bunnyBottom, cloudsPosition);
+        }
     }
+    if(gameRun)
+    switch (datasetUser.level) {
+        case 1:    
+            console.log('level 1', arbustoPosition);        
+            if(arbustoPosition >=0 && arbustoPosition <=20){
+                incrementScore();
+            }
+            break;
+        case 2:   
+            console.log('level 2', arbustoPosition);               
+            if(arbustoPosition >=0  && arbustoPosition <= 25){
+                incrementScore();
+            }
+            break;
+        case 3:   
+            console.log('level 3', arbustoPosition);               
+            if(arbustoPosition >=0  && arbustoPosition <= 30){
+                incrementScore();
+            }
+            break;
+    }
+
 }, 10);
 
 const move = (event) =>{
@@ -26,17 +59,42 @@ function bunnyJump() {
     }, 500);
 }
 
+function incrementScore(){
+    datasetUser.score ++;
+    userscore.innerHTML = datasetUser.score; 
+    if(datasetUser.score == 10){
+        incrementLevel()
+    }
+    if(datasetUser.score == 20){
+        incrementLevel()
+    }
+}
+
+function incrementLevel(){
+    arbusto.classList.remove( datasetUser.classLevel.arbusto );
+    datasetUser.level++;
+    datasetUser.classLevel.arbusto = 'animate-arbusto-level-'+datasetUser.level;
+    arbusto.classList.add( datasetUser.classLevel.arbusto );
+}
+
 function startAnimation(){
+    gameRun = true;
+    datasetUser.score = 0;
+    datasetUser.level = 1;
+    datasetUser.classLevel.arbusto = `animate-arbusto-level-1`;
+
     bunny.style.bottom = `-30px`;
     bunny.src = './images/bunny_walking.gif';
     arbusto.removeAttribute("style");
     clouds.removeAttribute("style");
-    arbusto.classList.add('animate-arbusto');
+    arbusto.classList.add( datasetUser.classLevel.arbusto );
     clouds.classList.add('animate-clouds');
 }
 
 function stopAnimation(arbustoPosition, bunnyBottom, cloudsPosition) {
-    arbusto.classList.remove('animate-arbusto');
+    console.log(datasetUser);
+    gameRun = false;
+    arbusto.classList.remove( datasetUser.classLevel.arbusto );
     arbusto.style.left = `${arbustoPosition}px`;
 
     bunny.style.bottom = `${bunnyBottom}px`;
