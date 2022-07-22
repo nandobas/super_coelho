@@ -2,31 +2,27 @@ const bunny = document.querySelector(".bunny");
 const arbusto = document.querySelector(".arbusto");
 const clouds = document.querySelector(".clouds");
 
-startAnimation();
+const loop = setInterval(()=>{
+    const cloudsPosition = arbusto.offsetLeft;
+    const arbustoPosition = arbusto.offsetLeft;
+    const bunnyBottom = +window.getComputedStyle(bunny).bottom.replace('px', '');
 
-var loop = null;
-function resetGame(){
-    if(loop!=null){
-        clearInterval(loop);
+    if(arbustoPosition <= 180 && arbustoPosition >0 && bunnyBottom < 80){
+        stopAnimation(arbustoPosition, bunnyBottom, cloudsPosition);        
     }
-    startAnimation();
-}
-
+}, 10);
 
 const move = (event) =>{
     const keyName = event.key;
-
     if (keyName == 'ArrowUp'){
-        jump();
+        bunnyJump();
     }
 }
 
-document.addEventListener('keydown', (e)=>{move(e)});
-
-function jump() {
-    bunny.classList.add('jump');
+function bunnyJump() {
+    bunny.classList.add('bunny-jump');
     setTimeout(() => {
-        bunny.classList.remove('jump');
+        bunny.classList.remove('bunny-jump');
     }, 500);
 }
 
@@ -37,25 +33,20 @@ function startAnimation(){
     clouds.removeAttribute("style");
     arbusto.classList.add('animate-arbusto');
     clouds.classList.add('animate-clouds');
-
-    loop = setInterval(()=>{
-        const cloudsPosition = arbusto.offsetLeft;
-        const arbustoPosition = arbusto.offsetLeft;
-        const bunnyPosition = +window.getComputedStyle(bunny).bottom.replace('px', '');
-
-        if(arbustoPosition <= 120 && arbustoPosition >0 && bunnyPosition < 80){
-            stopAnimation(arbustoPosition, bunnyPosition, cloudsPosition);        
-        }
-    }, 10);
 }
 
-function stopAnimation(arbustoPosition, bunnyPosition, cloudsPosition) {
+function stopAnimation(arbustoPosition, bunnyBottom, cloudsPosition) {
     arbusto.classList.remove('animate-arbusto');
     arbusto.style.left = `${arbustoPosition}px`;
 
-    bunny.style.bottom = `${bunnyPosition}px`;
+    bunny.style.bottom = `${bunnyBottom}px`;
     bunny.src = './images/death_bunny.png';
 
     clouds.classList.remove('animate-clouds');
     clouds.style.left = `${cloudsPosition}px`;
 }
+
+
+startAnimation();
+//event listeners
+document.addEventListener('keydown', (e)=>{move(e)});
