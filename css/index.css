@@ -21,13 +21,13 @@
     height: 300px;
     float: right;
     margin-right: 1%;
-    padding-top: 33px;
-    padding-left: 4.5%;
+    padding-top: 35px;
+    padding-left: 2.6%;
 }
 
 .label-score{
     width: 150px;
-    font: 2em "Times New Roman", Times, serif;
+    font: 1.5em "Times New Roman", Times, serif;
     font-weight: bold;
 }
 
@@ -69,6 +69,9 @@
 }
 .animate-arbusto-level-3{
     animation: arbusto-animation 0.9s infinite linear;
+}
+.animate-arbusto-level-4{
+    animation: arbusto-animation 0.7s infinite linear;
 }
 
 @keyframes nuvens-animation{
