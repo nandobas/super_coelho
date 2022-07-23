@@ -57,7 +57,7 @@ const checkLevel = setInterval(()=>{
     datasetUser.endDateTime = new Date();
     diference = new DateTimeDiference(datasetUser.startDateTime, datasetUser.endDateTime);        
 
-    if(diference.segundos==30){
+    if(gameRun && diference.segundos==30){
         incrementLevel();
     }
 
